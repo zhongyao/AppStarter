@@ -26,6 +26,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'org.jay.appstarterexample'
 }
 
 dependencies {
@@ -49,7 +50,7 @@ dependencies {
 
     // 地图 SDK
     implementation 'com.amap.api:3dmap:latest.integration'
-    implementation 'com.amap.api:location:latest.integration'
+//    implementation 'com.amap.api:location:latest.integration'
     implementation 'com.amap.api:search:latest.integration'
 
     // 腾讯轻量级键值对数据存储框架
