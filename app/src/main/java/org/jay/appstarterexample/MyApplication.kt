@@ -48,10 +48,10 @@ class MyApplication : Application() {
         dispatcher
             .addTask(InitAMapTask())    // 高德 SDK 初始化任务
             .addTask(InitStethoTask())  // Stetho 初始化任务
-            .addTask(InitWeexTask())    // weex 初始化任务
+            .addTask(InitWeexTask())    // 【主线程】weex 初始化任务
             .addTask(InitBuglyTask())   // Bugly 初始化任务
             .addTask(InitFrescoTask())  // Frescode 初始化任务
-            .addTask(InitJPushTask())   // 极光推送 SDK 初始化任务
+            .addTask(InitJPushTask())   // 【依赖GetDeviceIdTask】极光推送 SDK 初始化任务
             .addTask(InitUmengTask())   // 友盟 SDK 初始化任务
             .addTask(GetDeviceIdTask()) // 获取设备 ID 初始化任务
             .addTask(DelayInitTaskA())  // 延迟初始化任务 A

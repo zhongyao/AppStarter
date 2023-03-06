@@ -54,6 +54,8 @@ class TaskDispatcher private constructor() {
 
     /**
      * 已经结束的Task
+     *
+     * out 相当于Java中的 ? extends 【生产者】
      */
     @Volatile
     private var mFinishedTasks: MutableList<Class<out Task>> = ArrayList(100) //
