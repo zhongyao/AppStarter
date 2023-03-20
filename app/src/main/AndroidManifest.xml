@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
             android:name=".MyApplication"
@@ -16,6 +17,30 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!--reference：
+            https://juejin.cn/post/7003238879641731102
+
+            如果不希望在启动的时候自动初始化某个库，而是想要在特定的时机手动初始化，这要怎么办呢？
+            首先通过分析源码，找到该库初始化的Initializer的全路径类名
+            在项目的AndroidManifest.xml当中加入如下配置:
+
+            禁用单个库就在meta-data中加入tools:node="remove"
+            禁用所有库就是在provider标签中加入tools:node="remove"
+            然后在需要的地方去手动的初始化
+
+            延迟初始化也是非常有用的，可以减少 App 的启动时间，提高启动速度。
+            -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="org.jay.appstarterexample.provider.AppContentProviderInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
     </application>
 
 </manifest>
